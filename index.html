@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Современная кофейня</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                              url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 90vh;
+        }
+        
+        .menu-item {
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #6F4E37;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            border-bottom: 1px solid #d1d5db;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-bottom: 1px solid #6F4E37;
+            outline: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <header class="fixed w-full bg-white shadow-sm z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-mug-hot text-2xl text-brown-800 mr-2" style="color: #6F4E37;"></i>
+                <span class="text-xl font-semibold">Современная кофейня</span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link active">Главная</a>
+                <a href="#menu" class="nav-link">Меню</a>
+                <a href="#about" class="nav-link">О нас</a>
+                <a href="#blog" class="nav-link">Блог</a>
+                <a href="#contact" class="nav-link">Контакты</a>
+            </nav>
+            
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 px-4 shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="nav-link active">Главная</a>
+                <a href="#menu" class="nav-link">Меню</a>
+                <a href="#about" class="nav-link">О нас</a>
+                <a href="#blog" class="nav-link">Блог</a>
+                <a href="#contact" class="nav-link">Контакты</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero flex items-center justify-center pt-20">
+        <div class="container mx-auto px-4 text-center fade-in">
+            <h1 class="text-4xl md:text-6xl font-light mb-6">Современная кофейня</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Современная кофейня с душой. Лучшие сорта кофе и домашняя выпечка в уютной атмосфере.</p>
+            <a href="#menu" class="inline-block px-8 py-3 bg-brown-800 text-white rounded-full hover:bg-brown-700 transition duration-300" style="background-color: #6F4E37;">Посмотреть меню</a>
+        </div>
+    </section>
+
+    <section id="menu" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-light text-center mb-12">Наше меню</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="menu-item bg-gray-50 p-6 rounded-lg">
+                    <div class="h-48 bg-gray-200 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Эспрессо" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Эспрессо</h3>
+                    <p class="text-gray-600 mb-4">Классический крепкий кофе с насыщенным вкусом и ароматом.</p>
+                    <p class="text-lg font-medium" style="color: #6F4E37;">150 ₽</p>
+                </div>
+                
+                <div class="menu-item bg-gray-50 p-6 rounded-lg">
+                    <div class="h-48 bg-gray-200 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Латте" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Латте</h3>
+                    <p class="text-gray-600 mb-4">Нежный кофейный напиток с молоком и воздушной пенкой.</p>
+                    <p class="text-lg font-medium" style="color: #6F4E37;">220 ₽</p>
+                </div>
+                
+                <div class="menu-item bg-gray-50 p-6 rounded-lg">
+                    <div class="h-48 bg-gray-200 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Капучино" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Капучино</h3>
+                    <p class="text-gray-600 mb-4">Идеальный баланс эспрессо, молока и молочной пены.</p>
+                    <p class="text-lg font-medium" style="color: #6F4E37;">200 ₽</p>
+                </div>
+                
+                <div class="menu-item bg-gray-50 p-6 rounded-lg">
+                    <div class="h-48 bg-gray-200 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1559620192-032c4bc4674e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Круассан" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Круассан</h3>
+                    <p class="text-gray-600 mb-4">Свежая слоеная выпечка с хрустящей корочкой.</p>
+                    <p class="text-lg font-medium" style="color: #6F4E37;">180 ₽</p>
+                </div>
+                
+                <div class="menu-item bg-gray-50 p-6 rounded-lg">
+                    <div class="h-48 bg-gray-200 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Чизкейк" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Чизкейк</h3>
+                    <p class="text-gray-600 mb-4">Нежный десерт из творожного сыра на песочной основе.</p>
+                    <p class="text-lg font-medium" style="color: #6F4E37;">280 ₽</p>
+                </div>
+                
+                <div class="menu-item bg-gray-50 p-6 rounded-lg">
+                    <div class="h-48 bg-gray-200 mb-4 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1606313564200-7a4c2b0d0e4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Маффин" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Маффин</h3>
+                    <p class="text-gray-600 mb-4">Ароматная домашняя выпечка с шоколадной крошкой.</p>
+                    <p class="text-lg font-medium" style="color: #6F4E37;">160 ₽</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <div class="h-96 bg-gray-200 rounded-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Интерьер кофейни" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-light mb-6">О нашей кофейне</h2>
+                    <p class="text-gray-600 mb-4">Urban Brew — это место, где встречаются традиции и современность. Мы открылись в 2015 году с простой миссией — создавать лучший кофе в городе.</p>
+                    <p class="text-gray-600 mb-4">Наши бариста проходят специальное обучение и постоянно совершенствуют свои навыки. Мы тщательно отбираем зерна у проверенных поставщиков и обжариваем их по уникальным рецептам.</p>
+                    <p class="text-gray-600 mb-6">В Urban Brew вы найдете не только отличный кофе, но и уютную атмосферу для работы, встреч с друзьями или просто отдыха с книгой.</p>
+                    <a href="#contact" class="inline-block px-6 py-2 border border-brown-800 text-brown-800 rounded-full hover:bg-brown-800 hover:text-white transition duration-300" style="border-color: #6F4E37; color: #6F4E37;">Найти нас</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-light text-center mb-12">Новости и акции</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <div class="h-48 bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Новый сорт кофе" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium mb-2">Новый сорт кофе из Эфиопии</h3>
+                        <p class="text-gray-600 mb-4">Попробуйте наш новый эксклюзивный сорт Yirgacheffe с цветочными нотами и долгим послевкусием.</p>
+                        <p class="text-sm text-gray-500">15 июня 2023</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <div class="h-48 bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1559620192-032c4bc4674e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Акция на выпечку" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium mb-2">Скидка 20% на всю выпечку</h3>
+                        <p class="text-gray-600 mb-4">Каждый вторник с 14:00 до 18:00 действует специальное предложение на свежую выпечку.</p>
+                        <p class="text-sm text-gray-500">1 июня 2023</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <div class="h-48 bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Мастер-класс" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium mb-2">Мастер-класс по латте-арту</h3>
+                        <p class="text-gray-600 mb-4">Приглашаем на мастер-класс от нашего бариста-чемпиона. Научитесь создавать красивые узоры на кофе.</p>
+                        <p class="text-sm text-gray-500">25 мая 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-light text-center mb-12">Контакты</h2>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <div class="bg-white p-6 rounded-lg shadow-sm mb-6">
+                        <h3 class="text-xl font-medium mb-4">Адрес</h3>
+                        <p class="text-gray-600 mb-2"><i class="fas fa-map-marker-alt mr-2" style="color: #6F4E37;"></i> г. Москва, ул. Кофейная, 15</p>
+                        <p class="text-gray-600 mb-4">Мы работаем ежедневно с 8:00 до 22:00</p>
+                        <div class="h-64 bg-gray-200 rounded-lg overflow-hidden">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.372789949668!2d37.61531071593094!3d55.75202398055315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a50b315e573%3A0xa886bf70a86dceb9!2z0JzQvtGB0LrQvtCy0YHQutC40Lkg0JrQvtC70LvQtdC00LY!5e0!3m2!1sru!2sru!4v1620000000000!5m2!1sru!2sru" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-medium mb-4">Свяжитесь с нами</h3>
+                        <p class="text-gray-600 mb-2"><i class="fas fa-phone-alt mr-2" style="color: #6F4E37;"></i> +7 (495) 123-45-67</p>
+                        <p class="text-gray-600 mb-4"><i class="fas fa-envelope mr-2" style="color: #6F4E37;"></i> hello@urbanbrew.ru</p>
+                        
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-600 hover:text-brown-800 transition duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-brown-800 transition duration-300"><i class="fab fa-facebook text-xl"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-brown-800 transition duration-300"><i class="fab fa-telegram text-xl"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-brown-800 transition duration-300"><i class="fab fa-vk text-xl"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-white p-6 rounded-lg shadow-sm contact-form">
+                        <h3 class="text-xl font-medium mb-4">Обратная связь</h3>
+                        <form>
+                            <div class="mb-4">
+                                <input type="text" placeholder="Ваше имя" class="w-full py-2 px-1 bg-transparent">
+                            </div>
+                            <div class="mb-4">
+                                <input type="email" placeholder="Email" class="w-full py-2 px-1 bg-transparent">
+                            </div>
+                            <div class="mb-4">
+                                <input type="tel" placeholder="Телефон" class="w-full py-2 px-1 bg-transparent">
+                            </div>
+                            <div class="mb-6">
+                                <textarea placeholder="Ваше сообщение" rows="4" class="w-full py-2 px-1 bg-transparent"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3 bg-brown-800 text-white rounded-full hover:bg-brown-700 transition duration-300" style="background-color: #6F4E37;">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-mug-hot text-2xl mr-2" style="color: #6F4E37;"></i>
+                        <span class="text-xl font-semibold">Urban Brew</span>
+                    </div>
+                    <p class="text-gray-400 max-w-xs">Современная кофейня с душой. Лучшие сорта кофе и домашняя выпечка в уютной атмосфере.</p>
+                </div>
+                
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-lg font-medium mb-4">Быстрые ссылки</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Главная</a></li>
+                        <li><a href="#menu" class="text-gray-400 hover:text-white transition duration-300">Меню</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">О нас</a></li>
+                        <li><a href="#blog" class="text-gray-400 hover:text-white transition duration-300">Блог</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium mb-4">Подписка на новости</h3>
+                    <p class="text-gray-400 mb-4">Будьте в курсе наших акций и новостей.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Ваш email" class="py-2 px-4 rounded-l-full text-gray-800 w-full">
+                        <button type="submit" class="bg-brown-800 text-white py-2 px-4 rounded-r-full hover:bg-brown-700 transition duration-300" style="background-color: #6F4E37;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Urban Brew. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                document.getElementById('mobile-menu').classList.add('hidden');
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+        
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
