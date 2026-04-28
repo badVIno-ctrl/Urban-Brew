@@ -4,7 +4,8 @@
 Cloudflare Pages + Workers + D1 = всё в одном, бесплатно, не засыпает, 100k запросов/день. Через VPN — лучшее качество.
 Альтернатива без VPN: GitHub Pages (фронт) + Yandex Cloud Functions (бэк) + GigaChat.
 
-<img width="759" height="384" alt="image" src="https://github.com/user-attachments/assets/6d868ee7-ab15-4a82-8bdc-de5ef148e2e7" />
+<img width="1130" height="623" alt="image" src="https://github.com/user-attachments/assets/1e2480f9-bca9-4b58-b2a4-36317559a259" />
+
 
 
 🎓 «ШколаГПТ» — ИИ-репетитор ЕГЭ
